@@ -22,16 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.post('/add', function(req, res){
-  alert("sometext")
-});
-
-app.set('port', process.env.PORT || 3000);
-
-var server = app.listen(app.get('port'), function () {
-util.log('Ready on port ' + server.address().port);
-});
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -48,6 +38,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.post('/add', function(req, res){
+  alert("sometext")
+});
 
+const port = 4000;
+app.listen(process.env.PORT || port, () => console.log(`Example app listening at http://localhost:${port}`));
 
 module.exports = app;
