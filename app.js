@@ -26,6 +26,12 @@ app.post('/add', function(req, res){
   alert("sometext")
 });
 
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function () {
+util.log('Ready on port ' + server.address().port);
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
